@@ -3,3 +3,31 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p(id="name") Name:
+  input(type="text", name="pswd", value="test test", id="name")
+
+  ul
+    - for (var i=0; i<=5; i++) {
+      li Hello
+    - }
+  p test
+
+
+
+  h1= varToDisplay
+
+  //- form(name="add-estimation", method="post")
+  //-       div.input
+  //-           span.label Title
+  //-           input(type="text", name="title")
+  //-       div.input
+  //-           span.label Description
+  //-           textarea(name="description", cols="40", rows="5")
+  //-       div.actions
+  //-           input(type="submit", value="add")
+
+  form(name="testForm", method="post")
+    input(type="text", name="title")
+    input(type="submit", value="Submit")
+
+    h1  hello

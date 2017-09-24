@@ -1,0 +1,93 @@
+extends layout
+
+block content
+
+  h1 #{monthName} Bills
+  br
+  //- table
+  //-   tr
+  //-     
+  //-     for day in paydays
+  //-       th= day
+  //-       th Ammount
+  //-       th Paid
+  //-       
+  //-   tr
+  //-     //-var total = 0;
+  //-     for obj in billsObj
+  //-       -console.log(obj.bill);
+  //-       -total += obj.ammount
+  //-       tr
+  //-         td= obj.bill
+  //-         td= "$" + obj.ammount +".00"
+  //-         td
+  //-           input(type="checkbox")
+  //-       
+  //-     
+  //-   tr
+  //-     th total
+  //-     for day in paydays
+  //-       td= "$" + total + ".00"
+  //-   
+  
+  //- table
+  //-     
+  //-   -let index = 0;
+  //-   for day in paydays
+  //-     table
+  //-       tr
+  //-         th Date
+  //-         td= month + "/" + day
+  //-         td Paid
+  //-       for bill in bills[index]
+  //-         
+  //-         tr
+  //-           td= bill.bill
+  //-           td= bill.ammount
+  //-           td
+  //-             input(type="checkbox")
+  //-     -index++;
+  -let totalsArr = [];
+  
+  table
+    -let index = 0;
+    -let total = 0;
+    tr
+      for day in paydays
+        -total = 0;
+        td(valign="top")
+          table
+            tr
+              th= month + "/" + day
+              th Bill
+              th Paid
+            for bill in bills[index]
+              -total += bill.ammount;
+              tr
+                td= bill.bill
+                td= "$" + bill.ammount + ".00"
+                
+                td
+                  input(type="checkbox" id=bill.bill)
+                  
+                  
+        -index++;
+        -totalsArr.push(total);
+      tr  
+        for t in totalsArr
+          
+          td(align="right")= "$" + t + ".00"
+      tr  
+        for t in totalsArr
+          
+          td(align="right")= "$" + (1025 - t) + ".00" 
+          
+  
+  //- for bill in bills
+  //-   table
+  //-     for data in bill
+  //-       cols
+  //-         td= data.bill
+  //-         td= data.ammount
+  //-         td= data.dueDate
+  

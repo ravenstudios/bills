@@ -1,0 +1,87 @@
+
+extends layout
+#{locals.billsArr}
+block content
+  h1 add bills
+  
+  select(id="bills")
+    for bill in billsArr
+      -console.log(bill);
+      option(value=bill.billName) #{bill.billName}
+  
+  input(type="button", value="test", onclick="test()")
+  script.
+    function test(){
+      
+      var x =!{JSON.stringify(billsArr)};
+      //var billsArr =!{JSON.stringify(billsArr)}
+      //var x = #{billsArr}
+      //- console.log(billsArr);
+      //- console.log(typeof(billsArr));
+      var index = document.getElementById('bills').selectedIndex;
+      console.log(index);
+      //- console.log(billsArr[index]);
+      document.getElementById('billName').value = x[index].billName;
+      document.getElementById('dueDate').value = x[index].dueDate;
+      document.getElementById('ammount').value = x[index].ammount;
+      //add radio seleect
+    }
+    
+  
+  
+  select(id="monthList")
+    option(value=0) January
+    option(value=1) February
+    option(value=2) March
+    option(value=3) April
+    option(value=4) May
+    option(value=5) June
+    option(value=6) July
+    option(value=7) August
+    option(value=8) September
+    option(value=9) October
+    option(value=10) November
+    option(value=11) December
+    
+  script.
+    console.log(new Date().getMonth());
+    document.getElementById("monthList").selectedIndex = new Date().getMonth();
+  
+  
+  
+  
+  
+  div.addBill
+    form(name="addBill", method="post")
+      span
+        p Bill Name:
+        input(type="text", id="billName", name="billName", required)
+      span
+        p Due Date:
+        input(type="text", id="dueDate", name="dueDate", required)
+      span
+        p Ammount:
+        input(type="text", id="ammount", name="ammount", required)
+        br
+      br 
+      div.radioRecurring 
+        label
+        input(type='radio', name='recurring', value="m", checked='checked')
+        | Monthly
+        br
+        label
+        input(type='radio', name='recurring', value="w")
+        | Weekly
+        br
+        label
+        input(type='radio', name='recurring', value="o")
+        | One Time
+        br
+      input(type="submit", value="Submit")    
+  
+  
+    
+      
+      
+
+      
