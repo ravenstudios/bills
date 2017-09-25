@@ -3,7 +3,7 @@ extends layout
 #{locals.billsArr}
 block content
   h1 add bills
-  
+  -console.log(testVAr);
   select(id="bills")
     for bill in billsArr
       -console.log(bill);
@@ -19,7 +19,7 @@ block content
       //- console.log(billsArr);
       //- console.log(typeof(billsArr));
       var index = document.getElementById('bills').selectedIndex;
-      console.log(index);
+      //console.log(index);
       //- console.log(billsArr[index]);
       document.getElementById('billName').value = x[index].billName;
       document.getElementById('dueDate').value = x[index].dueDate;
@@ -27,7 +27,7 @@ block content
       //add radio seleect
     }
     
-  
+    
   
   select(id="monthList")
     option(value=0) January
@@ -44,7 +44,7 @@ block content
     option(value=11) December
     
   script.
-    console.log(new Date().getMonth());
+    //console.log(new Date().getMonth());
     document.getElementById("monthList").selectedIndex = new Date().getMonth();
   
   
@@ -80,8 +80,13 @@ block content
       input(type="submit", value="Submit")    
   
   
-    
+    input(type="button", value="Delete", onclick="move()")
       
-      
+    script.
+      function move() {
+        //alert("jsdfj");
+        let query = "?q=" + document.getElementById("billName").value;
+        window.location.href = '/deleteBill/' + query
+      }
 
       

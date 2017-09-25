@@ -7,7 +7,18 @@ a {
   color: #00B7FF;
 }
 
-table, tr, th, td{
+/*table, tr, th, td{
   border: solid 1px;
-  
+
+}*/
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color: blue;
+}
+
+.green{
+  background-color: green;
 }

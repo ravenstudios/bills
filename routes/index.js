@@ -9,30 +9,30 @@ var url = "mongodb://ravenstudios.ddns.net:27017/test";
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
-  mdb = req.db;
-  var name;
-  //var url = "mongodb://ravenstudios.ddns.net:27017/test";
+  // mdb = req.db;
+  // var name;
+  // //var url = "mongodb://ravenstudios.ddns.net:27017/test";
+  //
+  // mdb.connect(url, (err, db)=>{
+  //   if(err){
+  //     throw err;
+  //   }
+  //   db.collection("usercollection").findOne({email: "rob"}, (err, result)=>{
+  //     if(err){
+  //       throw err;
+  //     }
+  //     console.log("result: " + result.username);
+  //     name = result.email;
+  //     db.close;
+  //
+  //
+  //   })
+  // });
 
-  mdb.connect(url, (err, db)=>{
-    if(err){
-      throw err;
-    }
-    db.collection("usercollection").findOne({email: "rob"}, (err, result)=>{
-      if(err){
-        throw err;
-      }
-      console.log("result: " + result.username);
-      name = result.email;
-      db.close;
-
-      res.render('index', {
-          varToDisplay : name,
-          title: "Express"
-      });
-    })
+  res.render('index', {
+      
+      title: "Express"
   });
-
-
   // res.render('index', { title: 'Express' });
 });
 

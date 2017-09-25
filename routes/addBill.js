@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 let mdb;
 let url;
-
+let testVAr = "good luck";
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
   console.log(url);
 
 
-
+  //db.members.createIndex( { "user_id": 1 }, { unique: true } )
   mdb.connect(url, function(err, db) {
   if (err) throw err;
   db.collection("bills").find({}).toArray(function(err, result) {
@@ -31,8 +31,9 @@ router.get('/', function(req, res, next) {
 
 
 
-
 });
+
+
 
 
 router.post('/', function (req, res) {//gets data from page
@@ -60,8 +61,8 @@ router.post('/', function (req, res) {//gets data from page
       })
     })
 
-    res.render('addBill');
-
+    //res.render('addBill');
+    res.redirect('back');
 });
 
 module.exports = router;

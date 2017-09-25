@@ -9,6 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var bills = require('./routes/bills')
 var addBill = require('./routes/addBill')
+var deleteBill = require('./routes/deleteBill')
 var app = express();
 var MongoClient = require("mongodb").MongoClient;
 var url = "mongodb://ravenstudios.ddns.net:27017/test";
@@ -39,6 +40,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/bills', bills);
 app.use('/addBill', addBill);
+app.use('/deleteBill', deleteBill);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
